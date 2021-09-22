@@ -3,10 +3,20 @@ import json
 from flask import Flask,redirect
 import urllib.request
 import math
+import re
+import json
+import ipinfo
 
-lat_py = float(input("Latitude:"))
-lon_py = float(input("Longitude:"))
+access_token = '418fa716a075cf'
+handler = ipinfo.getHandler(access_token)
+details = handler.getDetails()
 
+d = details.loc.split(",")
+
+
+lat_py = float(d[0])
+lon_py = float(d[1])
+print(lat_py, lon_py)
 lat = lat_py #lattitude
 lon = lon_py #longitude
 z = 13 		 #zoom

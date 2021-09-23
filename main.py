@@ -1,18 +1,18 @@
 import requests
 import json
 from flask import Flask, render_template
-import urllib.request
+from urllib.request import urlopen
 import math
 import re
 import json
 import ipinfo
+import pprint
 
 access_token = '418fa716a075cf'
 handler = ipinfo.getHandler(access_token)
 details = handler.getDetails()
 
 d = details.loc.split(",")
-
 
 lat_py = float(d[0])
 lon_py = float(d[1])
@@ -24,6 +24,11 @@ latRad = lat * math.pi / 180
 n = pow(2, z)
 xTile = n * ((lon + 180) / 360)
 yTile = n * (1-(math.log(math.tan(latRad) + 1/math.cos(latRad)) /math.pi)) / 2
+
+
+with urlopen('https://discover.search.hereapi.com/v1/discover?at='+str(lat)+','+str(lon)+'&q=hospital&apiKey=N46AqYQ1bpAbqASUk_nsK-sMDNkFh5lkeAA2DFkPDU8') as resp:
+	project_info = json.load(resp)#['title']
+pprint.pprint(project_info)
 
 
 app = Flask(__name__)

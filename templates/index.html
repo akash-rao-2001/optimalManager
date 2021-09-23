@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+    <script type="text/javascript">
+      var x = {{ data.x|tojson }}
+      var y = {{ data.y|tojson }}
+    </script>
+
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+    type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+    type="text/javascript" charset="utf-8"></script>
+  </head>
+
+  <body style="padding: 0; margin: 0;">
+
+    <div id="mapContainer" style="width: 100vw; height: 100vh"></div>
+    <script>
+      function myFunc(vars) {
+    return x + y
+    }
+
+    // Initialize the platform object:
+    var platform = new H.service.Platform({
+      'apikey': 'KFtQDR-RSEu6S3XI68xZpn3B8YIeDdDKqeawRlxXe5s'
+    });
+
+    // Obtain the default map types from the platform object
+    var maptypes = platform.createDefaultLayers();
+
+
+    console.log(x)
+    console.log(y)
+
+    // Instantiate (and display) a map object:
+    var map = new H.Map(
+      document.getElementById('mapContainer'),
+      maptypes.vector.normal.map,
+      {
+        zoom: 10,
+        center: { lng: y, lat: x }
+      });
+
+
+    window.addEventListener('resize', 
+      () => map.getViewPort().resize());
+    </script>
+    
+  </body>
+</html>

@@ -1,6 +1,6 @@
 import requests
 import json
-from flask import Flask,redirect
+from flask import Flask, render_template
 import urllib.request
 import math
 import re
@@ -31,7 +31,9 @@ app = Flask(__name__)
 @app.route('/')
 # ‘/’ URL is bound with hello_world() function.
 def hello_world():
-    return redirect('https://1.base.maps.ls.hereapi.com/maptile/2.1/maptile/newest/normal.day/13/'+str(int(xTile))+'/'+str(int(yTile))+'/512/png8?apiKey=N46AqYQ1bpAbqASUk_nsK-sMDNkFh5lkeAA2DFkPDU8', code=302)
+	data = {'x': float(lat), 'y': float(lon)}
+	return render_template('index.html', data=data)
+    #return redirect('https://1.base.maps.ls.hereapi.com/maptile/2.1/maptile/newest/normal.day/13/'+str(int(xTile))+'/'+str(int(yTile))+'/512/png8?apiKey=N46AqYQ1bpAbqASUk_nsK-sMDNkFh5lkeAA2DFkPDU8', code=302)
 
 if __name__ == '__main__':
  

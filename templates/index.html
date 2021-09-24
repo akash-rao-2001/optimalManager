@@ -10,6 +10,28 @@
       var p1phone = {{ data.p1phone|tojson }}
       var p1lat = {{ data.p1lat|tojson }}
       var p1lng = {{ data.p1lng|tojson }}
+
+      var p2title = {{ data.p2title|tojson }}
+      var p2phone = {{ data.p2phone|tojson }}
+      var p2lat = {{ data.p2lat|tojson }}
+      var p2lng = {{ data.p2lng|tojson }}
+
+      var p3title = {{ data.p3title|tojson }}
+      var p3phone = {{ data.p3phone|tojson }}
+      var p3lat = {{ data.p3lat|tojson }}
+      var p3lng = {{ data.p3lng|tojson }}
+
+      var p4title = {{ data.p4title|tojson }}
+      var p4phone = {{ data.p4phone|tojson }}
+      var p4lat = {{ data.p4lat|tojson }}
+      var p4lng = {{ data.p4lng|tojson }}
+
+      var p5title = {{ data.p5title|tojson }}
+      var p5phone = {{ data.p5phone|tojson }}
+      var p5lat = {{ data.p5lat|tojson }}
+      var p5lng = {{ data.p5lng|tojson }}
+
+      
     </script>
 
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
@@ -62,14 +84,30 @@
     p1title + "       "
     +
     p1phone);
+
+    addMarkerToGroup(group, {lat: p2lat, lng: p2lng},
+    p2title + "       "
+    +
+    p2phone);
+
+    addMarkerToGroup(group, {lat: p3lat, lng: p3lng},
+    p3title + "       "
+    +
+    p3phone);
+
+    addMarkerToGroup(group, {lat: p4lat, lng: p4lng},
+    p4title + "       "
+    +
+    p4phone);
+
+    addMarkerToGroup(group, {lat: p5lat, lng: p5lng},
+    p5title + "       "
+    +
+    p5phone);
+
 }
 
-
-
-
-
-
-      function moveMapToBerlin(map){
+    function moveMapToBerlin(map){
       map.setCenter({lat:x, lng:y});
       map.setZoom(14);
     }

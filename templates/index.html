@@ -28,6 +28,42 @@
     
     <div id="map"></div>
     <script>
+    function addMarkerToGroup(group, coordinate, html) {
+      var marker = new H.map.Marker(coordinate);
+      // add custom data to the marker
+      marker.setData(html);
+      group.addObject(marker);
+    }
+
+    function addInfoBubble(map) {
+  var group = new H.map.Group();
+
+  map.addObject(group);
+
+  // add 'tap' event listener, that opens info bubble, to the group
+  group.addEventListener('tap', function (evt) {
+    // event target is the marker itself, group is a parent event target
+    // for all objects that it contains
+    var bubble = new H.ui.InfoBubble(evt.target.getGeometry(), {
+      // read custom data
+      content: evt.target.getData()
+    });
+    // show info bubble
+    ui.addBubble(bubble);
+  }, false);
+    addMarkerToGroup(group, {lat: x, lng: y},
+    '<div><h2>YOU</h2></div>');
+    
+    addMarkerToGroup(group, {lat: 53.430, lng: -2.961},
+    '<div><a href="https://www.liverpoolfc.tv">Liverpool</a></div>' +
+    '<div>Anfield<br />Capacity: 54,074</div>');
+}
+
+
+
+
+
+
       function moveMapToBerlin(map){
       map.setCenter({lat:x, lng:y});
       map.setZoom(14);
@@ -53,7 +89,7 @@
       document.getElementById('map'),
       maptypes.vector.normal.map,
       {
-        zoom: 10,
+        zoom: 7,
         center: { lng: y, lat: x },
         pixelRatio: window.devicePixelRatio || 1
       });
@@ -68,6 +104,8 @@
     window.onload = function () {
       moveMapToBerlin(map);
     }
+
+    addInfoBubble(map);
 
     </script>
     

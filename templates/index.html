@@ -1,22 +1,40 @@
 <html>
   <head>
-    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
     <script type="text/javascript">
       var x = {{ data.x|tojson }}
       var y = {{ data.y|tojson }}
     </script>
 
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="demo.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="../template.css" />
+
+    <script type="text/javascript" src='../test-credentials.js'></script>   
+
     <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
     type="text/javascript" charset="utf-8"></script>
     <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
     type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <script>window.ENV_VARIABLE = 'developer.here.com'</script><script src='../iframeheight.js'></script>
+
   </head>
 
-  <body style="padding: 0; margin: 0;">
+  <body style="padding: 0; margin: 0;" id="markers-on-the-map">
 
     <div id="mapContainer" style="width: 100vw; height: 100vh"></div>
+    <div id="map"></div>
     <script>
+      function moveMapToBerlin(map){
+      map.setCenter({lat:x, lng:y});
+      map.setZoom(14);
+    }
       function myFunc(vars) {
     return x + y
     }
@@ -35,16 +53,25 @@
 
     // Instantiate (and display) a map object:
     var map = new H.Map(
-      document.getElementById('mapContainer'),
+      document.getElementById('map'),
       maptypes.vector.normal.map,
       {
-        zoom: 10,
-        center: { lng: y, lat: x }
+        zoom: 4,
+        center: { lng: y, lat: x },
+        pixelRatio: window.devicePixelRatio || 1
       });
 
 
     window.addEventListener('resize', 
       () => map.getViewPort().resize());
+
+    var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+    var ui = H.ui.UI.createDefault(map, maptypes);
+    window.onload = function () {
+      moveMapToBerlin(map);
+    }
+
     </script>
     
   </body>

@@ -30,13 +30,17 @@ with urlopen('https://discover.search.hereapi.com/v1/discover?at='+str(lat)+','+
 	project_info = json.load(resp)#['title']
 pprint.pprint(project_info)
 
+p1title = project_info['items'][0]['title']
+p1phone = project_info['items'][0]['contacts'][0]['phone'][0]['value']
+p1lat = project_info['items'][0]['access'][0]['lat']
+p1lng = project_info['items'][0]['access'][0]['lng']
 
 app = Flask(__name__)
  
 @app.route('/')
 # ‘/’ URL is bound with hello_world() function.
 def hello_world():
-	data = {'x': float(lat), 'y': float(lon)}
+	data = {'x': float(lat), 'y': float(lon), 'p1title': p1title , 'p1phone': p1phone, "p1lat": float(p1lat), "p1lng": float(p1lng)}
 	return render_template('index.html', data=data)
     #return redirect('https://1.base.maps.ls.hereapi.com/maptile/2.1/maptile/newest/normal.day/13/'+str(int(xTile))+'/'+str(int(yTile))+'/512/png8?apiKey=N46AqYQ1bpAbqASUk_nsK-sMDNkFh5lkeAA2DFkPDU8', code=302)
 

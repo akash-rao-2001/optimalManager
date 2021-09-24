@@ -6,6 +6,10 @@
     <script type="text/javascript">
       var x = {{ data.x|tojson }}
       var y = {{ data.y|tojson }}
+      var p1title = {{ data.p1title|tojson }}
+      var p1phone = {{ data.p1phone|tojson }}
+      var p1lat = {{ data.p1lat|tojson }}
+      var p1lng = {{ data.p1lng|tojson }}
     </script>
 
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
@@ -52,11 +56,12 @@
     ui.addBubble(bubble);
   }, false);
     addMarkerToGroup(group, {lat: x, lng: y},
-    '<div><h2>YOU</h2></div>');
+    '<div>You</div>');
     
-    addMarkerToGroup(group, {lat: 53.430, lng: -2.961},
-    '<div><a href="https://www.liverpoolfc.tv">Liverpool</a></div>' +
-    '<div>Anfield<br />Capacity: 54,074</div>');
+    addMarkerToGroup(group, {lat: p1lat, lng: p1lng},
+    p1title + "       "
+    +
+    p1phone);
 }
 
 

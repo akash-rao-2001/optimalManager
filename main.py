@@ -32,76 +32,90 @@ pprint.pprint(project_info)
 
 
 p1title = project_info['items'][0]['title']
-try: 
-	p1phone = project_info['items'][0]['contacts'][0]['phone'][0]['value']
-except: 
-	p1phone = "na"
-try: 
-	p1phone = project_info['items'][0]['contacts'][0]['mobile'][0]['value']
-except: 
-	p1phone = "na"
+
+try:
+    p1phone = project_info['items'][0]['contacts'][0]['phone'][0]['value']
+except Exception:
+    try:
+        p1phone = project_info['items'][0]['contacts'][0]['mobile'][0]['value']
+    except Exception:
+        try:
+            p1phone = "na"
+        except Exception:
+            pass
 
 p1lat = project_info['items'][0]['access'][0]['lat']
 p1lng = project_info['items'][0]['access'][0]['lng']
 
 p2title = project_info['items'][1]['title']
-try: 
-	p2phone = project_info['items'][1]['contacts'][0]['phone'][0]['value']
-except: 
-	p2phone = "na"
-try: 
-	p2phone = project_info['items'][1]['contacts'][0]['mobile'][0]['value']
-except: 
-	p2phone = "na"
+try:
+    p2phone = project_info['items'][1]['contacts'][0]['phone'][0]['value']
+except Exception:
+    try:
+        p2phone = project_info['items'][1]['contacts'][0]['mobile'][0]['value']
+    except Exception:
+        try:
+            p2phone = "na"
+        except Exception:
+            pass
+
 p2lat = project_info['items'][1]['access'][0]['lat']
 p2lng = project_info['items'][1]['access'][0]['lng']
 
 p3title = project_info['items'][2]['title']
 try:
-	p3phone = project_info['items'][2]['contacts'][0]['phone'][0]['value']
-except:
-	p3phone = "na"
-try:
-	p3phone = project_info['items'][2]['contacts'][0]['mobile'][0]['value']
-except:
-	p3phone = "na"
+    p3phone = project_info['items'][2]['contacts'][0]['phone'][0]['value']
+except Exception:
+    try:
+        p3phone = project_info['items'][2]['contacts'][0]['mobile'][0]['value']
+    except Exception:
+        try:
+            p3phone = "na"
+        except Exception:
+            pass
 p3lat = project_info['items'][2]['access'][0]['lat']
 p3lng = project_info['items'][2]['access'][0]['lng']
 
 p4title = project_info['items'][3]['title']
 try:
-	p4phone = project_info['items'][3]['contacts'][0]['phone'][0]['value']
-except:
-	p4phone = "na"
-try:
-	p4phone = project_info['items'][3]['contacts'][0]['mobile'][0]['value']
-except:
-	p4phone = "na"
+    p4phone = project_info['items'][3]['contacts'][0]['phone'][0]['value']
+except Exception:
+    try:
+        p4phone = project_info['items'][3]['contacts'][0]['mobile'][0]['value']
+    except Exception:
+        try:
+            p4phone = "na"
+        except Exception:
+            pass
 p4lat = project_info['items'][3]['access'][0]['lat']
 p4lng = project_info['items'][3]['access'][0]['lng']
 
 p5title = project_info['items'][4]['title']
 try:
-	p5phone = project_info['items'][4]['contacts'][0]['phone'][0]['value']
-except:
-	p5phone = "na"
-try:
-	p5phone = project_info['items'][4]['contacts'][0]['mobile'][0]['value']
-except:
-	p5phone = "na"
+    p5phone = project_info['items'][4]['contacts'][0]['phone'][0]['value']
+except Exception:
+    try:
+        p5phone = project_info['items'][4]['contacts'][0]['mobile'][0]['value']
+    except Exception:
+        try:
+            p5phone = "na"
+        except Exception:
+            pass
 
 p5lat = project_info['items'][4]['access'][0]['lat']
 p5lng = project_info['items'][4]['access'][0]['lng']
 
 p6title = project_info['items'][5]['title']
 try:
-	p6phone = project_info['items'][5]['contacts'][0]['phone'][0]['value']
-except:
-	p6phone = "na"
-try:
-	p6phone = project_info['items'][4]['contacts'][0]['mobile'][0]['value']
-except:
-	p6phone = "na"
+    p6phone = project_info['items'][5]['contacts'][0]['phone'][0]['value']
+except Exception:
+    try:
+        p6phone = project_info['items'][5]['contacts'][0]['mobile'][0]['value']
+    except Exception:
+        try:
+            p6phone = "na"
+        except Exception:
+            pass
 p6lat = project_info['items'][5]['access'][0]['lat']
 p6lng = project_info['items'][5]['access'][0]['lng']
 

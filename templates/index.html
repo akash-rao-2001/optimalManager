@@ -31,6 +31,11 @@
       var p5lat = {{ data.p5lat|tojson }}
       var p5lng = {{ data.p5lng|tojson }}
 
+      var p6title = {{ data.p6title|tojson }}
+      var p6phone = {{ data.p6phone|tojson }}
+      var p6lat = {{ data.p6lat|tojson }}
+      var p6lng = {{ data.p6lng|tojson }}
+
       
     </script>
 
@@ -104,6 +109,11 @@
     p5title + "       "
     +
     p5phone);
+
+    addMarkerToGroup(group, {lat: p6lat, lng: p6lng},
+    p6title + "       "
+    +
+    p6phone);
 
 }
 

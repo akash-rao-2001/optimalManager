@@ -2,7 +2,7 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=yes">
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="text/javascript">
       var x = {{ data.x|tojson }}
       var y = {{ data.y|tojson }}
@@ -10,6 +10,7 @@
       var p1phone = {{ data.p1phone|tojson }}
       var p1lat = {{ data.p1lat|tojson }}
       var p1lng = {{ data.p1lng|tojson }}
+      var p1label = {{ data.p1label|tojson }}
 
       var p2title = {{ data.p2title|tojson }}
       var p2phone = {{ data.p2phone|tojson }}
@@ -56,11 +57,21 @@
 
   <body style="padding: 0; margin: 0;" id="markers-on-the-map">
 
+
+    <div class="alert alert-danger" role="alert">
+      <h1 id="greeting">  </h2>
+      <h3 id="phone">  </h3>
+    </div>
     
+
+
     <div id="map"></div>
 
 
+
     <script>
+    
+
     function addMarkerToGroup(group, coordinate, html) {
       var marker = new H.map.Marker(coordinate);
       // add custom data to the marker
@@ -162,6 +173,7 @@
 
 
 
+
     
     var targetElement = document.getElementById('map');
 
@@ -220,6 +232,19 @@
         });
 
     </script>
+
+
+    <script type="text/javascript">
+        window.onload = function(){
+      document.getElementById("greeting").innerHTML = "location: ".concat(p1label);
+      document.getElementById("phone").innerHTML = "mobile: ".concat(p1phone);
+
+      };
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
   </body>
 </html>

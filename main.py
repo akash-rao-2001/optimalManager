@@ -138,7 +138,10 @@ def vmd_timestamp():
 		
 @app.route('/user')
 def hello_user():
-    return redirect('https://route.ls.hereapi.com/routing/7.2/calculateroute.json?apiKey=N46AqYQ1bpAbqASUk_nsK-sMDNkFh5lkeAA2DFkPDU8&waypoint0=geo!52.516858379,13.3884717&waypoint1=geo!52.51733824,13.394678415&mode=fastest;car;traffic:disabled&avoidareas=52.517100760,13.3905424488;52.5169701849,13.391808451', code=302)
+    res = requests.get('https://route.ls.hereapi.com/routing/7.2/calculateroute.json?apiKey=N46AqYQ1bpAbqASUk_nsK-sMDNkFh5lkeAA2DFkPDU8&waypoint0=geo!52.516858379,13.3884717&waypoint1=geo!52.51733824,13.394678415&mode=fastest;car;traffic:disabled&avoidareas=52.517100760,13.3905424488;52.5169701849,13.391808451')
+    if res.ok:
+        print(res.json())
+    return redirect('https://1.base.maps.ls.hereapi.com/maptile/2.1/maptile/newest/normal.day/13/'+str(int(xTile))+'/'+str(int(yTile))+'/512/png8?apiKey=N46AqYQ1bpAbqASUk_nsK-sMDNkFh5lkeAA2DFkPDU8', code=302)
 
 
 if __name__ == '__main__':

@@ -1,13 +1,12 @@
 import requests
 import json
-from flask import Flask, render_template
 from urllib.request import urlopen
 import math
 import re
 import json
 import ipinfo
 import pprint
-
+from flask import Flask, render_template, request, redirect
 access_token = '418fa716a075cf'
 handler = ipinfo.getHandler(access_token)
 details = handler.getDetails()
@@ -137,7 +136,13 @@ def vmd_timestamp():
 	data = {'x': float(lat), 'y': float(lon), 'p1title': p1title , 'p1phone': p1phone, "p1lat": float(p1lat), "p1lng": float(p1lng), "p1label": p1label, 'p2title': p2title , 'p2phone': p2phone, "p2lat": float(p2lat), "p2lng": float(p2lng), 'p3title': p3title , 'p3phone': p3phone, "p3lat": float(p3lat), "p3lng": float(p3lng), 'p4title': p4title , 'p4phone': p4phone, "p4lat": float(p4lat), "p4lng": float(p4lng), 'p5title': p5title , 'p5phone': p5phone, "p5lat": float(p5lat), "p5lng": float(p5lng), 'p6title': p6title , 'p6phone': p6phone, "p6lat": float(p6lat), "p6lng": float(p6lng)}
 	return render_template('vmd_timestamp.html', data=data)
 		
+@app.route('/user')
+def hello_user():
+    return redirect('https://route.ls.hereapi.com/routing/7.2/calculateroute.json?apiKey=N46AqYQ1bpAbqASUk_nsK-sMDNkFh5lkeAA2DFkPDU8&waypoint0=geo!52.516858379,13.3884717&waypoint1=geo!52.51733824,13.394678415&mode=fastest;car;traffic:disabled&avoidareas=52.517100760,13.3905424488;52.5169701849,13.391808451', code=302)
+
+
 if __name__ == '__main__':
  
+    app.debug = True
     # run() Flask application on local server.
     app.run()
